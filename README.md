@@ -33,4 +33,33 @@ Installation steps:
    - install chart. example: helm install g42-sre-assignment charts/sre-assignment/ -n namespace-name
    - elasicsearch pod may take sometime to be readily available
    - Once elasticsearch is pod is available application would be up and running, verify using : kubectl get pods -n namespace-name
-   - 
+
+4. check the nodeport service and access application using the nodeport if ingress controller is not available
+
+Application Testing:
+This Application is Flask Api based and has below endpoints.
+1. GET: /api/v1/healthcheck :
+Application healthheck endpoint and returns {"health": "ok"} if elastic search DB is connected
+
+2. POST: /api/v1/addOrUpdateCityPopulation :
+This endpoint is to add or update a city name and population details. City names are not case-sensitive and will not be duplicated on elasticsearch.
+Api Details:
+Method: POST
+body example: {"city_name": "Dubai", "population_count": "686936546"}
+Content-type: application/json
+example curl request:
+curl -d "{\"city_name\": \"Abu Dhabi\", \"population_count\": \"6866546\"}" -H "Content-Type: application/json" -X POST http://localhost:5000/api/v1/addOrUpdateCityPopulation
+
+3. GET:  /api/v1/getCityPopulation/city_name
+4. POST: /api/v1/getCityPopulation :
+This endpoint is to fetch population details for city. City names are not case-sensitive.
+Api Details:
+Method: POST
+body example: {"city_name": "Dubai"}
+Content-type: application/json
+example curl request:
+curl -d "{\"city_name\": \"Dubai\"}" -H "Content-Type: application/json" -X POST http://localhost:5000/api/v1/getCityPopulation
+
+Conclusion:
+Thanks
+
