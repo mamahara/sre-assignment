@@ -57,7 +57,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: sre-assignment.127.0.0.1.nip.io
+    - host: sre-assignment.local
       paths:
         - path: /
           pathType: ImplementationSpecific
