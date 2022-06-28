@@ -23,3 +23,14 @@ Folder details:
 - k8s-anifest file has some k8s manifest for application deployment
 - charts folder has the helm chart for this application and a dependency chart(elasticsearch) for application
 - elasticsearch cluster is minimal with one node and can be scaled in future if required
+
+Installation steps:
+1. Download the repo to local where helm is installed
+2. move to the sre-assignment folder
+3. Install chart using below command
+   - create namespace where chart need to be deployed
+     ex: kubectl create namespace g42
+   - install chart. example: helm install g42-sre-assignment charts/sre-assignment/ -n namespace-name
+   - elasicsearch pod may take sometime to be readily available
+   - Once elasticsearch is pod is available application would be up and running, verify using : kubectl get pods -n namespace-name
+   - 
