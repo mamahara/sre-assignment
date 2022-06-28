@@ -1,0 +1,18 @@
+{{- if .Values.nodeportService.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "sre-assignment.fullname" . | join "-np"}}
+  name: {{(list "nodeport" (include "sre-assignment.fullname" .) | join "-")}}
+  labels:
+    {{- include "sre-assignment.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.nodeportService.type }}
+  ports:
+    - port: {{ .Values.nodeportService.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "sre-assignment.selectorLabels" . | nindent 4 }}
+{{- end}}

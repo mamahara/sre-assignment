@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<h1>
+    Welcome To My Assignment Page !!!!!!
+</h1>
+<h4>Please apis as below using postman or curl</h4>
+    <p1>This Application is Flask Api based and has below endpoints.</p1>
+<h5>1. GET: /api/v1/healthcheck : </h5>
+        <p1>Application healthheck endpoint and returns {"health": "ok"}
+            if elastic search DB is connected
+        </p1>
+
+<h5>2. POST: /api/v1/addOrUpdateCityPopulation : </h5>
+        <p1>This endpoint is to add or update a city name and population details.
+            City names are not case-sensitive and will not be duplicated on elasticsearch.<br>
+            <b>Api Details:</b><br>
+            <b>Method:</b> POST<br>
+            <b>body example: {"city_name": "Chennai", "population_count": "686936546"}</b><br>
+            <b>Content-type: application/json</b><br>
+            <b>example curl request:</b><br>
+            curl -d "{\"city_name\": \"Abu Dhabi\", \"population_count\": \"6866546\"}" -H "Content-Type: application/json" -X POST http://localhost:5000/api/v1/addOrUpdateCityPopulation<br>
+        </p1>
+
+<h5>3. GET: /api/v1/getCityPopulation/city_name OR</h5>
+       <h5>POST:/api/v1/getCityPopulation :</h5>
+        <p1>This endpoint is to fetch population details for a city
+            City names are not case-sensitive.<br>
+            <b>Api Details:</b><br>
+            <b>Method:</b> POST<br>
+            <b>body example: {"city_name": "Abu Dhabi"}</b><br>
+            <b>Content-type: application/json</b><br>
+            <b>example curl request:</b><br>
+            curl -d "{\"city_name\": \"Abu Dhabi\"}" -H "Content-Type: application/json" -X POST http://localhost:5000/api/v1/getCityPopulation<br>
+        </p1>
+
+</html>

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: sre-assignment
+  name: sre-assignment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sre-assignment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: sre-assignment
+    spec:
+      containers:
+      - image: mamahara/sre-assignment:1.0
+        name: sre-assignment
+        env:
+        - name: ES_HOST
+          value: "elasticsearch-master.g42.svc.cluster.local"
+        - name: ES_PORT
+          value: "9200"
+        - name: ES_SCHEME
+          value: 'http'
+        resources: {}
+status: {}
